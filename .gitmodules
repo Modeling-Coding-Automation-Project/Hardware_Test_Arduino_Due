@@ -1,0 +1,6 @@
+[submodule "lib/eigen"]
+	path = lib/eigen
+	url = https://gitlab.com/libeigen/eigen
+[submodule "lib/python_numpy_to_cpp"]
+	path = lib/python_numpy_to_cpp
+	url = https://github.com/Modeling-Coding-Automation-Project/python_numpy_to_cpp.git
