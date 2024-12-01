@@ -1,7 +1,8 @@
 #define USE_EIGEN_LIBRARY (0)
 
 #if USE_EIGEN_LIBRARY == 1
-#include "Core" // Eigen library
+#include "Core"   // Eigen library
+#include "Sparse" // Eigen library
 #else
 #include "python_numpy.hpp"
 #endif
@@ -13,8 +14,16 @@ void setup() {
 #if USE_EIGEN_LIBRARY == 1
   Eigen::Matrix<float, 4, 4> A;
   A << 2, 3, 1, 5, 4, 1, 6, 2, 0, 7, 3, 8, 9, 5, 2, 4;
-  Eigen::Matrix<float, 4, 4> C;
-  C << 0, 0, 5, 0, 7, 0, 0, 0, 4, 0, 0, 3, 2, 0, 8, 0;
+
+  Eigen::SparseMatrix<float> C(4, 4);
+  C.insert(0, 2) = 5;
+  C.insert(1, 0) = 7;
+  C.insert(2, 0) = 4;
+  C.insert(2, 3) = 3;
+  C.insert(3, 0) = 2;
+  C.insert(3, 2) = 8;
+  C.makeCompressed();
+
 #else
   PythonNumpy::Matrix<PythonNumpy::DefDense, float, 4, 4> A(
       {{2, 3, 1, 5}, {4, 1, 6, 2}, {0, 7, 3, 8}, {9, 5, 2, 4}});
@@ -36,7 +45,7 @@ void setup() {
   time_start = micros(); // start measuring.
 
 #if USE_EIGEN_LIBRARY == 1
-  Eigen::Matrix<float, 4, 4> D = A * A;
+  Eigen::Matrix<float, 4, 4> D = C * A;
 #else
   auto D = C * A;
 #endif
