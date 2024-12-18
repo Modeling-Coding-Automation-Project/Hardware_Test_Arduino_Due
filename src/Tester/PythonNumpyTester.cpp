@@ -50,8 +50,8 @@ void PythonNumpyTester::test_arithmetic_operation(void) {
 
   Serial.println("Result = ");
   std::stringstream result_stream;
-  for (std::size_t i = 0; i < D.cols(); i++) {
-    for (std::size_t j = 0; j < D.rows(); j++) {
+  for (std::size_t i = 0; i < static_cast<std::size_t>(D.cols()); i++) {
+    for (std::size_t j = 0; j < static_cast<std::size_t>(D.rows()); j++) {
 
 #if USE_EIGEN_LIBRARY == 1
       result_stream << D(i, j) << " ";
