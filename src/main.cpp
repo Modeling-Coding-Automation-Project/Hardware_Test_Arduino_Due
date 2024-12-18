@@ -2,7 +2,7 @@
 
 void setup() {
   /* calculation */
-  python_numpy_tester.test_arithmetic_operation();
+  // python_numpy_tester.test_arithmetic_operation();
 
   /* Timer interrupt preset */
   pinMode(LED_BUILTIN, OUTPUT);
