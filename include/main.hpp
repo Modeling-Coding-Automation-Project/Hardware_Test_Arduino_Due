@@ -11,4 +11,6 @@
 
 #define SS0PIN (10)
 
+#include "PythonNumpyTester.hpp"
+
 #endif
