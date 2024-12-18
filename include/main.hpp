@@ -13,4 +13,7 @@
 
 #define SS0PIN (10)
 
+/* Test Objects */
+PythonNumpyTester python_numpy_tester;
+
 #endif

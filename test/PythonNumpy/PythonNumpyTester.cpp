@@ -69,3 +69,5 @@ void PythonNumpyTester::test_arithmetic_operation(void) {
   Serial.print("Calculation time[us]: ");
   Serial.println(time_end - time_start);
 }
+
+PythonNumpyTester::~PythonNumpyTester() {}
