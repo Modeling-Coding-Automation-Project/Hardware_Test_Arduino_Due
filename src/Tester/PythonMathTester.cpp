@@ -3,7 +3,7 @@
 PythonMathTester::PythonMathTester() : y_array({}) {
 
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
-    x_array[i] = static_cast<float>(i);
+    x_array[i] = std::exp(static_cast<float>(2 * i));
   }
 }
 
@@ -26,12 +26,13 @@ void PythonMathTester::test_sqrt(void) {
 
   Serial.println("Result: \n");
   std::stringstream result_stream;
+  result_stream << std::scientific << std::setprecision(7);
 
   result_stream << "Input, Output, Calculation time[us]" << std::endl;
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
-    result_stream << x_array[i] << " ";
-    result_stream << y_array[i] << " ";
-    result_stream << time_end - time_start;
+    result_stream << x_array[i] << ", ";
+    result_stream << y_array[i] << ", ";
+    result_stream << time_end[i] - time_start[i];
 
     result_stream << std::endl;
   }
