@@ -13,9 +13,9 @@ void BaseUtilityTester::test_copy(void) {
 
   time_start = micros(); // start measuring.
 
-  for (std::size_t i = 0; i < BaseUtilityTester::ARRAY_SIZE; i++) {
-    this->array_copy_destination[i] = this->array_copy_source[i];
-  }
+  //   for (std::size_t i = 0; i < BaseUtilityTester::ARRAY_SIZE; i++) {
+  //     this->array_copy_destination[i] = this->array_copy_source[i];
+  //   }
 
   //   std::memcpy(this->array_copy_destination.data(),
   //               this->array_copy_source.data(),
@@ -23,6 +23,9 @@ void BaseUtilityTester::test_copy(void) {
 
   //   std::copy(this->array_copy_source.begin(), this->array_copy_source.end(),
   //             this->array_copy_destination.begin());
+
+  Base::Utility::copy<float, BaseUtilityTester::ARRAY_SIZE>(
+      this->array_copy_source, this->array_copy_destination);
 
   time_end = micros(); // end measuring.
 
