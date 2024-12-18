@@ -3,6 +3,7 @@
 
 #include "base_utility.hpp"
 
+#include <cstring>
 #include <sstream>
 #include <stdint.h>
 #include <string>
@@ -23,11 +24,12 @@ public:
 
 private:
   /* Variables */
-  std::array<float, 100> array_copy_source;
+  std::array<float, ARRAY_SIZE> array_copy_source;
+  std::array<float, ARRAY_SIZE> array_copy_destination;
 
 public:
   /* Functions */
-  // void test_copy(void);
+  void test_copy(void);
 };
 
 #endif // BASE_UTILITY_TESTER_HPP

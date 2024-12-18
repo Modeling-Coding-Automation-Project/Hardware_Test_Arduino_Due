@@ -16,6 +16,6 @@
 
 /* Test Objects */
 // PythonNumpyTester python_numpy_tester;
-// BaseUtilityTester base_utility_tester;
+BaseUtilityTester base_utility_tester;
 
 #endif
