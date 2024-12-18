@@ -3,6 +3,7 @@
 
 #include "base_utility.hpp"
 
+#include <algorithm>
 #include <cstring>
 #include <sstream>
 #include <stdint.h>
