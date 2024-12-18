@@ -1,7 +1,7 @@
 #ifndef PYTHON_NUMPY_TESTER_HPP
 #define PYTHON_NUMPY_TESTER_HPP
 
-#define USE_EIGEN_LIBRARY (1)
+#define USE_EIGEN_LIBRARY (0)
 
 #if USE_EIGEN_LIBRARY == 1
 #include "Core"   // Eigen library
