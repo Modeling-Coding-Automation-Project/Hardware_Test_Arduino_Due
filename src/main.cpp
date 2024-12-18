@@ -1,5 +1,3 @@
-#define USE_EIGEN_LIBRARY (1)
-
 #include "main.hpp"
 
 void setup() {
