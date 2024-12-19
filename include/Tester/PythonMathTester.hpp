@@ -22,11 +22,15 @@ public:
 public:
   /* Constant */
   static constexpr std::size_t ARRAY_SIZE = 10;
+  static const double INPUT_DATA_EXP_2_I[ARRAY_SIZE];
+
+  static const double INPUT_DATA_EXP_2_I_SQRT[ARRAY_SIZE];
 
 private:
   /* Variables */
   std::array<float, ARRAY_SIZE> x_array;
   std::array<float, ARRAY_SIZE> y_array;
+  std::array<float, ARRAY_SIZE> y_array_answer;
 
 public:
   /* Functions */
