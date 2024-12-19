@@ -11,8 +11,8 @@
 
 #include <Arduino.h>
 
-// typedef float FLOAT;
-typedef double FLOAT;
+typedef float FLOAT;
+// typedef double FLOAT;
 
 class PythonMathTester {
 public:
@@ -29,6 +29,9 @@ public:
   static const double INPUT_DATA_EXP_2_I[ARRAY_SIZE];
   static const double INPUT_DATA_EXP_2_I_SQRT[ARRAY_SIZE];
 
+  static const double INPUT_DATA_10_I[ARRAY_SIZE];
+  static const double INPUT_DATA_10_I_SIN[ARRAY_SIZE];
+
 private:
   /* Variables */
   std::array<FLOAT, ARRAY_SIZE> x_array;
@@ -39,6 +42,7 @@ public:
   /* Functions */
   void test_sqrt(void);
   void test_exp(void);
+  void test_trigonometric(void);
 };
 
 #endif // PYTHON_MATH_TESTER_HPP

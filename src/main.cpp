@@ -4,7 +4,7 @@ void setup() {
   /* calculation */
   // python_numpy_tester.test_arithmetic_operation();
   // base_utility_tester.test_copy();
-  python_math_tester.test_exp();
+  python_math_tester.test_trigonometric();
 
   /* Timer interrupt preset */
   pinMode(LED_BUILTIN, OUTPUT);
