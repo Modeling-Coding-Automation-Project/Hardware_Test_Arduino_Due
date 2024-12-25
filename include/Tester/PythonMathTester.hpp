@@ -32,6 +32,7 @@ public:
   static const double INPUT_DATA_10_I[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_SIN[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_COS[ARRAY_SIZE];
+  static const double INPUT_DATA_10_I_ATAN[ARRAY_SIZE];
 
 private:
   /* Variables */

@@ -54,6 +54,12 @@ const double PythonMathTester::INPUT_DATA_10_I_COS[ARRAY_SIZE] = {
     -0.11038724383904756,
     -0.4480736161291701};
 
+const double PythonMathTester::INPUT_DATA_10_I_ATAN[ARRAY_SIZE] = {
+    0.0000000000000000, 1.4711276743037347, 1.5208379310729538,
+    1.5374753309166493, 1.5458015331759765, 1.5507989928217460,
+    1.5541312030809560, 1.5565115842074999, 1.5582969777755349,
+    1.5596856728972892};
+
 PythonMathTester::PythonMathTester() : y_array({}) {}
 
 void PythonMathTester::test_sqrt(void) {
@@ -202,8 +208,10 @@ void PythonMathTester::test_trigonometric(void) {
     x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I[i]);
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
+    // y_array_answer[i] =
+    //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
     y_array_answer[i] =
-        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
+        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_ATAN[i]);
   }
 
   unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
@@ -215,9 +223,13 @@ void PythonMathTester::test_trigonometric(void) {
 
     // y_array[i] = std::cos(x_array[i]);
     // y_array[i] = PythonMath::sin(x_array[i]);
-    y_array[i] =
-        Base::Math::cos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT, 3>(
-            x_array[i]);
+    // y_array[i] =
+    //     Base::Math::cos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT,
+    //     3>(
+    //         x_array[i]);
+
+    // y_array[i] = std::atan(x_array[i]);
+    y_array[i] = Base::Math::atan(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
@@ -267,7 +279,7 @@ void PythonMathTester::test_sincos(void) {
     // y_array[i] = std::sin(x_array[i]);
     // y_array_2[i] = std::cos(x_array[i]);
 
-    Base::Math::sincos_mcloughlin_expansion_with_DoubleAngle<FLOAT, 3>(
+    Base::Math::sincos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT, 3>(
         x_array[i], y_array_2[i], y_array[i]);
 
     time_end[i] = micros(); // end measuring.
