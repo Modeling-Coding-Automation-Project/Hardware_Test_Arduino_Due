@@ -42,6 +42,24 @@ const double PythonMathTester::INPUT_DATA_10_I_SIN[ARRAY_SIZE] = {
     -0.9938886539233752,
     0.8939966636005579};
 
+const double PythonMathTester::INPUT_DATA_10_I_COS[ARRAY_SIZE] = {
+    1.0,
+    -0.8390715290764524,
+    0.40808206181339196,
+    0.15425144988758405,
+    -0.6669380616522619,
+    0.9649660284921133,
+    -0.9524129804151563,
+    0.6333192030862999,
+    -0.11038724383904756,
+    -0.4480736161291701};
+
+const double PythonMathTester::INPUT_DATA_10_I_ATAN[ARRAY_SIZE] = {
+    0.0000000000000000, 1.4711276743037347, 1.5208379310729538,
+    1.5374753309166493, 1.5458015331759765, 1.5507989928217460,
+    1.5541312030809560, 1.5565115842074999, 1.5582969777755349,
+    1.5596856728972892};
+
 PythonMathTester::PythonMathTester() : y_array({}) {}
 
 void PythonMathTester::test_sqrt(void) {
@@ -69,8 +87,11 @@ void PythonMathTester::test_sqrt(void) {
 
   Serial.println("Result: \n");
   std::stringstream result_stream;
-  result_stream << std::scientific << std::setprecision(7);
-  // result_stream << std::scientific << std::setprecision(16);
+  if (4 == sizeof(FLOAT)) {
+    result_stream << std::scientific << std::setprecision(7);
+  } else {
+    result_stream << std::scientific << std::setprecision(16);
+  }
 
   result_stream << "Input, Output, dif, Calculation time[us]" << std::endl;
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
@@ -101,8 +122,10 @@ void PythonMathTester::test_exp(void) {
 
     time_start[i] = micros(); // start measuring.
 
-    y_array[i] = std::exp(x_array[i]);
+    // y_array[i] = std::exp(x_array[i]);
     // y_array[i] = PythonMath::exp(x_array[i]);
+    y_array[i] =
+        Base::Math::exp_mcloughlin_expansion_with_table<FLOAT, 4>(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
@@ -112,8 +135,58 @@ void PythonMathTester::test_exp(void) {
 
   Serial.println("Result: \n");
   std::stringstream result_stream;
-  // result_stream << std::scientific << std::setprecision(7);
-  result_stream << std::scientific << std::setprecision(16);
+  if (4 == sizeof(FLOAT)) {
+    result_stream << std::scientific << std::setprecision(7);
+  } else {
+    result_stream << std::scientific << std::setprecision(16);
+  }
+
+  result_stream << "Input, Output, dif, Calculation time[us]" << std::endl;
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+    result_stream << x_array[i] << ", ";
+    result_stream << y_array[i] << ", ";
+    result_stream << y_array[i] - y_array_answer[i] << ", ";
+    result_stream << time_end[i] - time_start[i];
+
+    result_stream << std::endl;
+  }
+  result_stream << std::endl;
+
+  std::string result_text = result_stream.str();
+  Serial.println(result_text.c_str());
+}
+
+void PythonMathTester::test_log(void) {
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_EXP_2_I[i]);
+    y_array_answer[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_2_I[i]);
+  }
+
+  unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
+  unsigned long time_end[PythonMathTester::ARRAY_SIZE] = {0};
+
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+
+    time_start[i] = micros(); // start measuring.
+
+    // y_array[i] = std::log(x_array[i]);
+    // y_array[i] = PythonMath::log(x_array[i]);
+    y_array[i] =
+        Base::Math::log_mcloughlin_expansion_with_table<FLOAT>(x_array[i]);
+
+    time_end[i] = micros(); // end measuring.
+  }
+
+  /* send result */
+  Serial.begin(9600);
+
+  Serial.println("Result: \n");
+  std::stringstream result_stream;
+  if (4 == sizeof(FLOAT)) {
+    result_stream << std::scientific << std::setprecision(7);
+  } else {
+    result_stream << std::scientific << std::setprecision(16);
+  }
 
   result_stream << "Input, Output, dif, Calculation time[us]" << std::endl;
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
@@ -133,8 +206,67 @@ void PythonMathTester::test_exp(void) {
 void PythonMathTester::test_trigonometric(void) {
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
     x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I[i]);
+    // y_array_answer[i] =
+    //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
+    // y_array_answer[i] =
+    //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
+    y_array_answer[i] =
+        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_ATAN[i]);
+  }
+
+  unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
+  unsigned long time_end[PythonMathTester::ARRAY_SIZE] = {0};
+
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+
+    time_start[i] = micros(); // start measuring.
+
+    // y_array[i] = std::cos(x_array[i]);
+    // y_array[i] = PythonMath::sin(x_array[i]);
+    // y_array[i] =
+    //     Base::Math::cos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT,
+    //     3>(
+    //         x_array[i]);
+
+    // y_array[i] = std::atan(x_array[i]);
+    y_array[i] = Base::Math::atan(x_array[i]);
+
+    time_end[i] = micros(); // end measuring.
+  }
+
+  /* send result */
+  Serial.begin(9600);
+
+  Serial.println("Result: \n");
+  std::stringstream result_stream;
+  if (4 == sizeof(FLOAT)) {
+    result_stream << std::scientific << std::setprecision(7);
+  } else {
+    result_stream << std::scientific << std::setprecision(16);
+  }
+
+  result_stream << "Input, Output, dif, Calculation time[us]" << std::endl;
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+    result_stream << x_array[i] << ", ";
+    result_stream << y_array[i] << ", ";
+    result_stream << y_array[i] - y_array_answer[i] << ", ";
+    result_stream << time_end[i] - time_start[i];
+
+    result_stream << std::endl;
+  }
+  result_stream << std::endl;
+
+  std::string result_text = result_stream.str();
+  Serial.println(result_text.c_str());
+}
+
+void PythonMathTester::test_sincos(void) {
+  for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
+    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I[i]);
     y_array_answer[i] =
         static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
+    y_array_answer_2[i] =
+        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
   }
 
   unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
@@ -145,7 +277,10 @@ void PythonMathTester::test_trigonometric(void) {
     time_start[i] = micros(); // start measuring.
 
     // y_array[i] = std::sin(x_array[i]);
-    y_array[i] = PythonMath::sin(x_array[i]);
+    // y_array_2[i] = std::cos(x_array[i]);
+
+    Base::Math::sincos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT, 3>(
+        x_array[i], y_array_2[i], y_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
@@ -155,14 +290,20 @@ void PythonMathTester::test_trigonometric(void) {
 
   Serial.println("Result: \n");
   std::stringstream result_stream;
-  result_stream << std::scientific << std::setprecision(7);
-  // result_stream << std::scientific << std::setprecision(16);
+  if (4 == sizeof(FLOAT)) {
+    result_stream << std::scientific << std::setprecision(7);
+  } else {
+    result_stream << std::scientific << std::setprecision(16);
+  }
 
-  result_stream << "Input, Output, dif, Calculation time[us]" << std::endl;
+  result_stream << "Input, Sin, Sin dif, Cos, Cos dif, Calculation time[us]"
+                << std::endl;
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
     result_stream << x_array[i] << ", ";
     result_stream << y_array[i] << ", ";
     result_stream << y_array[i] - y_array_answer[i] << ", ";
+    result_stream << y_array_2[i] << ", ";
+    result_stream << y_array_2[i] - y_array_answer_2[i] << ", ";
     result_stream << time_end[i] - time_start[i];
 
     result_stream << std::endl;
