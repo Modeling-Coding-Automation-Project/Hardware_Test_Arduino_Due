@@ -125,7 +125,7 @@ void PythonMathTester::test_exp(void) {
     // y_array[i] = std::exp(x_array[i]);
     // y_array[i] = PythonMath::exp(x_array[i]);
     y_array[i] =
-        Base::Math::exp_mcloughlin_expansion_with_table<FLOAT, 4>(x_array[i]);
+        Base::Math::exp_maclaurin_expansion_with_table<FLOAT, 4>(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
@@ -172,7 +172,7 @@ void PythonMathTester::test_log(void) {
     // y_array[i] = std::log(x_array[i]);
     // y_array[i] = PythonMath::log(x_array[i]);
     y_array[i] =
-        Base::Math::log_mcloughlin_expansion_with_table<FLOAT>(x_array[i]);
+        Base::Math::log_maclaurin_expansion_with_table<FLOAT>(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
@@ -224,7 +224,7 @@ void PythonMathTester::test_trigonometric(void) {
     // y_array[i] = std::cos(x_array[i]);
     // y_array[i] = PythonMath::sin(x_array[i]);
     // y_array[i] =
-    //     Base::Math::cos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT,
+    //     Base::Math::cos_maclaurin_expansion_with_DoubleAngleFormula<FLOAT,
     //     3>(
     //         x_array[i]);
 
@@ -279,7 +279,7 @@ void PythonMathTester::test_sincos(void) {
     // y_array[i] = std::sin(x_array[i]);
     // y_array_2[i] = std::cos(x_array[i]);
 
-    Base::Math::sincos_mcloughlin_expansion_with_DoubleAngleFormula<FLOAT, 3>(
+    Base::Math::sincos_maclaurin_expansion_with_DoubleAngleFormula<FLOAT, 3>(
         x_array[i], y_array_2[i], y_array[i]);
 
     time_end[i] = micros(); // end measuring.
