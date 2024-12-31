@@ -81,6 +81,12 @@ const double PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE] = {
     -1.4601836602551694,
     1.106186954104004};
 
+const double PythonMathTester::ACOS_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE] = {
+    1.5707963267948966, 2.1460183660255168, 0.42035224833365603,
+    2.986722862692829,  0.7300918301275845, 1.8362787842315884,
+    1.8805359085888251, 0.6858347057703479, 3.030979987050066,
+    0.4646093726908928};
+
 PythonMathTester::PythonMathTester() : y_array({}) {}
 
 void PythonMathTester::test_sqrt(void) {
@@ -226,18 +232,20 @@ void PythonMathTester::test_log(void) {
 
 void PythonMathTester::test_trigonometric(void) {
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
-    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL[i]);
-    // x_array[i] =
-    // static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
+    // x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL[i]);
+    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
 
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
-    y_array_answer[i] =
-        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL_ATAN[i]);
+
+    // y_array_answer[i] =
+    //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL_ATAN[i]);
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[i]);
+    y_array_answer[i] =
+        static_cast<FLOAT>(PythonMathTester::ACOS_FROM_INPUT_DATA_10_I_SIN[i]);
   }
 
   unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
@@ -254,11 +262,13 @@ void PythonMathTester::test_trigonometric(void) {
     //     3>(
     //         x_array[i]);
 
-    y_array[i] = std::atan(x_array[i]);
+    // y_array[i] = std::atan(x_array[i]);
     // y_array[i] = Base::Math::atan(x_array[i]);
 
     // y_array[i] = std::asin(x_array[i]);
     // y_array[i] = Base::Math::asin(x_array[i]);
+    // y_array[i] = std::acos(x_array[i]);
+    y_array[i] = Base::Math::acos(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }
