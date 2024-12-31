@@ -60,6 +60,18 @@ const double PythonMathTester::INPUT_DATA_10_I_ATAN[ARRAY_SIZE] = {
     1.5541312030809560, 1.5565115842074999, 1.5582969777755349,
     1.5596856728972892};
 
+const double PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE] = {
+    0.0,
+    -0.5752220392306202,
+    1.1504440784612406,
+    -1.4159265358979325,
+    0.8407044966673122,
+    -0.2654824574366918,
+    -0.30973958179392846,
+    0.8849616210245488,
+    -1.4601836602551694,
+    1.106186954104004};
+
 PythonMathTester::PythonMathTester() : y_array({}) {}
 
 void PythonMathTester::test_sqrt(void) {
@@ -206,12 +218,17 @@ void PythonMathTester::test_log(void) {
 void PythonMathTester::test_trigonometric(void) {
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
     x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I[i]);
+    // x_array[i] =
+    // static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
+
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
     y_array_answer[i] =
         static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_ATAN[i]);
+    // y_array_answer[i] =
+    //     static_cast<FLOAT>(PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[i]);
   }
 
   unsigned long time_start[PythonMathTester::ARRAY_SIZE] = {0};
@@ -230,6 +247,9 @@ void PythonMathTester::test_trigonometric(void) {
 
     // y_array[i] = std::atan(x_array[i]);
     y_array[i] = Base::Math::atan(x_array[i]);
+
+    // y_array[i] = std::asin(x_array[i]);
+    // y_array[i] = Base::Math::asin(x_array[i]);
 
     time_end[i] = micros(); // end measuring.
   }

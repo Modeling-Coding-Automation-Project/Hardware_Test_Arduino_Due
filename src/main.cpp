@@ -3,8 +3,8 @@
 void setup() {
   /* calculation */
   // base_utility_tester.test_copy();
-  // python_math_tester.test_trigonometric();
-  python_numpy_tester.test_arithmetic_operation();
+  python_math_tester.test_trigonometric();
+  // python_numpy_tester.test_arithmetic_operation();
 
   /* Timer interrupt preset */
   pinMode(LED_BUILTIN, OUTPUT);

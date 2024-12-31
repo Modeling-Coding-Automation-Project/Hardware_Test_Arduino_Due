@@ -11,8 +11,8 @@
 
 #include <Arduino.h>
 
-// typedef float FLOAT;
-typedef double FLOAT;
+typedef float FLOAT;
+// typedef double FLOAT;
 
 class PythonMathTester {
 public:
@@ -33,6 +33,7 @@ public:
   static const double INPUT_DATA_10_I_SIN[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_COS[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_ATAN[ARRAY_SIZE];
+  static const double ASIN_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE];
 
 private:
   /* Variables */
