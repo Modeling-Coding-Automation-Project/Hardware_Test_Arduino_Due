@@ -32,7 +32,10 @@ public:
   static const double INPUT_DATA_10_I[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_SIN[ARRAY_SIZE];
   static const double INPUT_DATA_10_I_COS[ARRAY_SIZE];
-  static const double INPUT_DATA_10_I_ATAN[ARRAY_SIZE];
+
+  static const double INPUT_DATA_SMALL[ARRAY_SIZE];
+  static const double INPUT_DATA_SMALL_ATAN[ARRAY_SIZE];
+
   static const double ASIN_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE];
 
 private:

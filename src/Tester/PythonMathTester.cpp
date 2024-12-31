@@ -54,11 +54,20 @@ const double PythonMathTester::INPUT_DATA_10_I_COS[ARRAY_SIZE] = {
     -0.11038724383904756,
     -0.4480736161291701};
 
-const double PythonMathTester::INPUT_DATA_10_I_ATAN[ARRAY_SIZE] = {
-    0.0000000000000000, 1.4711276743037347, 1.5208379310729538,
-    1.5374753309166493, 1.5458015331759765, 1.5507989928217460,
-    1.5541312030809560, 1.5565115842074999, 1.5582969777755349,
-    1.5596856728972892};
+const double PythonMathTester::INPUT_DATA_SMALL[ARRAY_SIZE] = {
+    0.0, 0.2, 0.4, 0.6, 0.8, 1., 1.2, 1.4, 1.6, 1.8};
+
+const double PythonMathTester::INPUT_DATA_SMALL_ATAN[ARRAY_SIZE] = {
+    0.0,
+    0.19739555984988078,
+    0.3805063771123649,
+    0.5404195002705842,
+    0.6747409422235527,
+    0.7853981633974483,
+    0.8760580505981934,
+    0.9505468408120751,
+    1.0121970114513341,
+    1.0636978224025597};
 
 const double PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[ARRAY_SIZE] = {
     0.0,
@@ -217,7 +226,7 @@ void PythonMathTester::test_log(void) {
 
 void PythonMathTester::test_trigonometric(void) {
   for (std::size_t i = 0; i < PythonMathTester::ARRAY_SIZE; i++) {
-    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I[i]);
+    x_array[i] = static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL[i]);
     // x_array[i] =
     // static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_SIN[i]);
 
@@ -226,7 +235,7 @@ void PythonMathTester::test_trigonometric(void) {
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_COS[i]);
     y_array_answer[i] =
-        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_10_I_ATAN[i]);
+        static_cast<FLOAT>(PythonMathTester::INPUT_DATA_SMALL_ATAN[i]);
     // y_array_answer[i] =
     //     static_cast<FLOAT>(PythonMathTester::ASIN_FROM_INPUT_DATA_10_I_SIN[i]);
   }
@@ -245,8 +254,8 @@ void PythonMathTester::test_trigonometric(void) {
     //     3>(
     //         x_array[i]);
 
-    // y_array[i] = std::atan(x_array[i]);
-    y_array[i] = Base::Math::atan(x_array[i]);
+    y_array[i] = std::atan(x_array[i]);
+    // y_array[i] = Base::Math::atan(x_array[i]);
 
     // y_array[i] = std::asin(x_array[i]);
     // y_array[i] = Base::Math::asin(x_array[i]);
