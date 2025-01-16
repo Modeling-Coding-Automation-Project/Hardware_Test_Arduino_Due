@@ -1,5 +1,5 @@
-#ifndef _MAIN_HPP_
-#define _MAIN_HPP_
+#ifndef __MAIN_HPP__
+#define __MAIN_HPP__
 
 // #include "BaseUtilityTester.hpp"
 #include "PythonMathTester.hpp"
@@ -20,4 +20,4 @@
 PythonMathTester python_math_tester;
 // PythonNumpyTester python_numpy_tester;
 
-#endif
+#endif // __MAIN_HPP__

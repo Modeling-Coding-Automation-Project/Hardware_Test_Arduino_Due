@@ -1,5 +1,5 @@
-#ifndef PYTHON_MATH_TESTER_HPP
-#define PYTHON_MATH_TESTER_HPP
+#ifndef __PYTHON_MATH_TESTER_HPP__
+#define __PYTHON_MATH_TESTER_HPP__
 
 #include "python_math.hpp"
 
@@ -56,4 +56,4 @@ public:
   void test_sincos(void);
 };
 
-#endif // PYTHON_MATH_TESTER_HPP
+#endif // __PYTHON_MATH_TESTER_HPP__
