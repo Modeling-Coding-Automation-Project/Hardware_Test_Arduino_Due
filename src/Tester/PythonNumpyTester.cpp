@@ -56,7 +56,7 @@ void PythonNumpyTester::test_arithmetic_operation(void) {
 #if USE_EIGEN_LIBRARY == 1
       result_stream << D(i, j) << " ";
 #else
-      result_stream << D.matrix(i, j) << " ";
+      result_stream << D(i, j) << " ";
 #endif
     }
     result_stream << std::endl;
