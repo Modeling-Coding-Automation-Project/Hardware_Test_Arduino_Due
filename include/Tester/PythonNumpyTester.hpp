@@ -37,15 +37,20 @@ private:
 
 #else // USE_EIGEN_LIBRARY == 0
 
-  PythonNumpy::Matrix<PythonNumpy::DefDense, float, 4, 4> A;
-  PythonNumpy::Matrix<
-      PythonNumpy::DefSparse, float, 4, 4,
-      PythonNumpy::SparseAvailable<
-          PythonNumpy::ColumnAvailable<false, false, true, false>,
-          PythonNumpy::ColumnAvailable<true, false, false, false>,
-          PythonNumpy::ColumnAvailable<true, false, false, true>,
-          PythonNumpy::ColumnAvailable<true, false, true, false>>>
-      C;
+  /* Type */
+  using A_Type = decltype(PythonNumpy::make_DenseMatrix<4, 4>(0.0F));
+
+  A_Type A;
+
+  using C_Type =
+      decltype(PythonNumpy::make_SparseMatrix<PythonNumpy::SparseAvailable<
+                   PythonNumpy::ColumnAvailable<false, false, true, false>,
+                   PythonNumpy::ColumnAvailable<true, false, false, false>,
+                   PythonNumpy::ColumnAvailable<true, false, false, true>,
+                   PythonNumpy::ColumnAvailable<true, false, true, false>>>(
+          static_cast<float>(0)));
+
+  C_Type C;
 
 #endif // USE_EIGEN_LIBRARY == 1
 };

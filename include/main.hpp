@@ -2,8 +2,8 @@
 #define __MAIN_HPP__
 
 // #include "BaseUtilityTester.hpp"
-#include "PythonMathTester.hpp"
-// #include "PythonNumpyTester.hpp"
+// #include "PythonMathTester.hpp"
+#include "PythonNumpyTester.hpp"
 
 #include <sstream>
 #include <stdint.h>
@@ -17,7 +17,7 @@
 
 /* Test Objects */
 // BaseUtilityTester base_utility_tester;
-PythonMathTester python_math_tester;
-// PythonNumpyTester python_numpy_tester;
+// PythonMathTester python_math_tester;
+PythonNumpyTester python_numpy_tester;
 
 #endif // __MAIN_HPP__
