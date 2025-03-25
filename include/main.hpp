@@ -3,8 +3,8 @@
 
 // #include "BaseUtilityTester.hpp"
 // #include "PythonMathTester.hpp"
-#include "PythonControlTester.hpp"
 // #include "PythonNumpyTester.hpp"
+#include "PythonControlTester.hpp"
 
 #include <sstream>
 #include <stdint.h>
