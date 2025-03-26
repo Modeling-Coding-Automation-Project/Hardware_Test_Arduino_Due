@@ -179,6 +179,7 @@ void PythonControlTester::test_ls(void) {
   time_end = micros(); // end measuring.
 
   auto weights = ls.get_weights();
+  decltype(weights) weights_true({{0.5f}, {-0.2f}, {0.3f}});
 
   /* send result */
   Serial.begin(9600);
@@ -188,15 +189,24 @@ void PythonControlTester::test_ls(void) {
 
   result_stream << std::scientific << std::setprecision(7);
 
-  result_stream << "Calculation time[us]" << std::endl;
+  result_stream << "Calculation time[us]:" << std::endl;
   result_stream << time_end - time_start << std::endl;
 
   result_stream << "Weights true:" << std::endl;
-  result_stream << "0.5, -0.2, 0.3" << std::endl;
+  result_stream << weights_true(0, 0) << ", " << weights_true(1, 0) << ", ";
+  result_stream << weights_true(2, 0) << std::endl;
 
   result_stream << "Weights estimated:" << std::endl;
   result_stream << weights(0, 0) << ", " << weights(1, 0) << ", ";
   result_stream << weights(2, 0) << std::endl;
+
+  result_stream << "Weights relative error:" << std::endl;
+  result_stream << (weights(0, 0) - weights_true(0, 0)) / weights_true(0, 0)
+                << ", ";
+  result_stream << (weights(1, 0) - weights_true(1, 0)) / weights_true(1, 0)
+                << ", ";
+  result_stream << (weights(2, 0) - weights_true(2, 0)) / weights_true(2, 0)
+                << std::endl;
 
   result_stream << std::endl;
 
