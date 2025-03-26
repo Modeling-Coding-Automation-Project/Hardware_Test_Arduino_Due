@@ -13,6 +13,18 @@
 
 #include <Arduino.h>
 
+namespace LS_TestData {
+
+constexpr std::size_t NUMBER_OF_DATA = 100;
+constexpr std::size_t X_SIZE = 2;
+constexpr std::size_t Y_SIZE = 1;
+
+double get_test_X(std::size_t i, std::size_t j);
+
+double get_test_Y(std::size_t i, std::size_t j);
+
+} // namespace LS_TestData
+
 class PythonControlTester {
 public:
   /* Constant, Type */

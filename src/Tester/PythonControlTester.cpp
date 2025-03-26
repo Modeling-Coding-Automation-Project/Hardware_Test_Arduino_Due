@@ -4,10 +4,6 @@ namespace LS_TestData {
 
 using namespace PythonNumpy;
 
-constexpr std::size_t NUMBER_OF_DATA = 100;
-constexpr std::size_t X_SIZE = 2;
-constexpr std::size_t Y_SIZE = 1;
-
 DenseMatrix_Type<double, NUMBER_OF_DATA, X_SIZE>
     test_X_data({{3.745401188473625, 0.3142918568673425},
                  {9.50714306409916, 6.364104112637804},
