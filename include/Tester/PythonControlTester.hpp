@@ -29,6 +29,7 @@ class PythonControlTester {
 public:
   /* Constant, Type */
   static constexpr std::size_t LS_NUMBER_OF_DATA = 20;
+  static constexpr std::size_t RLS_NUMBER_OF_DATA = 100;
   static constexpr std::size_t X_SIZE = 2;
   static constexpr std::size_t Y_SIZE = 1;
 
@@ -36,8 +37,10 @@ public:
       PythonNumpy::DenseMatrix_Type<float, LS_NUMBER_OF_DATA, X_SIZE>;
   using LS_Y_Type =
       PythonNumpy::DenseMatrix_Type<float, LS_NUMBER_OF_DATA, Y_SIZE>;
-
   using LS_Type = PythonControl::LeastSquares_Type<LS_X_Type>;
+
+  using RLS_X_Type = PythonControl::StateSpaceStateType<float, X_SIZE>;
+  using RLS_Type = PythonControl::RecursiveLeastSquares_Type<RLS_X_Type>;
 
 public:
   /* Constructor */
@@ -49,10 +52,13 @@ public:
 public:
   /* Functions */
   void test_ls(void);
+  void test_rls(void);
 
 private:
   /* Variables */
   LS_Type ls;
+  RLS_Type rls;
+
   LS_X_Type LS_X;
   LS_Y_Type LS_Y;
 };

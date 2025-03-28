@@ -163,6 +163,8 @@ PythonControlTester::PythonControlTester() {
       this->LS_Y(i, j) = static_cast<float>(LS_TestData::get_test_Y(i, j));
     }
   }
+
+  rls.set_lambda(0.9);
 }
 
 PythonControlTester::~PythonControlTester() {}
@@ -191,6 +193,64 @@ void PythonControlTester::test_ls(void) {
 
   result_stream << "Calculation time[us]:" << std::endl;
   result_stream << time_end - time_start << std::endl;
+
+  result_stream << "Weights true:" << std::endl;
+  result_stream << weights_true(0, 0) << ", " << weights_true(1, 0) << ", ";
+  result_stream << weights_true(2, 0) << std::endl;
+
+  result_stream << "Weights estimated:" << std::endl;
+  result_stream << weights(0, 0) << ", " << weights(1, 0) << ", ";
+  result_stream << weights(2, 0) << std::endl;
+
+  result_stream << "Weights relative error:" << std::endl;
+  result_stream << (weights(0, 0) - weights_true(0, 0)) / weights_true(0, 0)
+                << ", ";
+  result_stream << (weights(1, 0) - weights_true(1, 0)) / weights_true(1, 0)
+                << ", ";
+  result_stream << (weights(2, 0) - weights_true(2, 0)) / weights_true(2, 0)
+                << std::endl;
+
+  result_stream << std::endl;
+
+  std::string result_text = result_stream.str();
+  Serial.println(result_text.c_str());
+}
+
+void PythonControlTester::test_rls(void) {
+
+  std::array<unsigned long, RLS_NUMBER_OF_DATA> time_start({});
+  std::array<unsigned long, RLS_NUMBER_OF_DATA> time_end({});
+
+  for (std::size_t i = 0; i < RLS_NUMBER_OF_DATA; i++) {
+    RLS_X_Type X_row;
+    for (std::size_t j = 0; j < X_SIZE; j++) {
+      X_row(j, 0) = LS_X(i, j);
+    }
+
+    float y = LS_Y(i, 0);
+
+    time_start[i] = micros(); // start measuring.
+
+    rls.update(X_row, y);
+
+    time_end[i] = micros(); // end measuring.
+  }
+
+  auto weights = rls.get_weights();
+  decltype(weights) weights_true({{0.5f}, {-0.2f}, {0.3f}});
+
+  /* send result */
+  Serial.begin(9600);
+
+  Serial.println("Result: \n");
+  std::stringstream result_stream;
+
+  result_stream << std::scientific << std::setprecision(7);
+
+  result_stream << "Calculation time[us]:" << std::endl;
+  for (std::size_t i = 0; i < RLS_NUMBER_OF_DATA; i++) {
+    result_stream << time_end[i] - time_start[i] << std::endl;
+  }
 
   result_stream << "Weights true:" << std::endl;
   result_stream << weights_true(0, 0) << ", " << weights_true(1, 0) << ", ";
