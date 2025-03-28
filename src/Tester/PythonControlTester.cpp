@@ -164,7 +164,7 @@ PythonControlTester::PythonControlTester() {
     }
   }
 
-  rls.set_lambda(0.9);
+  rls.set_lambda(0.9F);
 }
 
 PythonControlTester::~PythonControlTester() {}
@@ -224,10 +224,10 @@ void PythonControlTester::test_rls(void) {
   for (std::size_t i = 0; i < RLS_NUMBER_OF_DATA; i++) {
     RLS_X_Type X_row;
     for (std::size_t j = 0; j < X_SIZE; j++) {
-      X_row(j, 0) = LS_X(i, j);
+      X_row(j, 0) = static_cast<float>(LS_TestData::get_test_X(i, j));
     }
 
-    float y = LS_Y(i, 0);
+    float y = static_cast<float>(LS_TestData::get_test_Y(i, 0));
 
     time_start[i] = micros(); // start measuring.
 
