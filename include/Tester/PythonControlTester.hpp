@@ -39,7 +39,7 @@ public:
       PythonNumpy::DenseMatrix_Type<float, LS_NUMBER_OF_DATA, Y_SIZE>;
   using LS_Type = PythonControl::LeastSquares_Type<LS_X_Type>;
 
-  using RLS_X_Type = PythonControl::StateSpaceStateType<float, X_SIZE>;
+  using RLS_X_Type = PythonControl::StateSpaceState_Type<float, X_SIZE>;
   using RLS_Type = PythonControl::RecursiveLeastSquares_Type<RLS_X_Type>;
 
 public:
