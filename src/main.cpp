@@ -5,7 +5,8 @@ void setup() {
   // base_utility_tester.test_copy();
   // python_math_tester.test_trigonometric();
   // python_numpy_tester.test_arithmetic_operation();
-  python_control_tester.test_rls();
+  // python_control_tester.test_rls();
+  python_mpc_tester.test_mpc();
 
   /* Timer interrupt preset */
   pinMode(LED_BUILTIN, OUTPUT);
