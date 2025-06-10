@@ -1,8 +1,6 @@
 #ifndef __PYTHON_CONTROL_TESTER_HPP__
 #define __PYTHON_CONTROL_TESTER_HPP__
 
-#define USE_EIGEN_LIBRARY (0)
-
 #include "python_control.hpp"
 
 #include <cmath>
