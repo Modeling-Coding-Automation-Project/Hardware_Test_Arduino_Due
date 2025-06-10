@@ -13,7 +13,7 @@
 
 #include <Arduino.h>
 
-#define LTI_MPC_USE_CONSTRAINTS (0)
+#define LTI_MPC_USE_CONSTRAINTS (1)
 
 class PythonMPC_Tester {
 public:
