@@ -13,3 +13,6 @@
 [submodule "lib/python_control_to_cpp"]
 	path = lib/python_control_to_cpp
 	url = https://github.com/Modeling-Coding-Automation-Project/python_control_to_cpp.git
+[submodule "lib/python_mpc_to_cpp"]
+	path = lib/python_mpc_to_cpp
+	url = https://github.com/Modeling-Coding-Automation-Project/python_mpc_to_cpp.git
