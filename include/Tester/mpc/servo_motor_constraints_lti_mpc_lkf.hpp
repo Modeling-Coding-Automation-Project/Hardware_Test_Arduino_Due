@@ -25,7 +25,7 @@ using R_Type = KalmanFilter_R_Type<double, OUTPUT_SIZE>;
 using type = LinearKalmanFilter_Type<
     LkfStateSpace_Type, Q_Type, R_Type>;
 
-auto make() -> type {
+inline auto make() -> type {
 
   auto lkf_state_space = servo_motor_constraints_lti_mpc_lkf_ss::make();
 
