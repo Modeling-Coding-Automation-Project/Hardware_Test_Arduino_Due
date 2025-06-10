@@ -26,12 +26,12 @@ constexpr std::size_t INPUT_SIZE = B_Type::ROWS;
 constexpr std::size_t STATE_SIZE = A_Type::COLS;
 constexpr std::size_t OUTPUT_SIZE = C_Type::COLS;
 
-using type = DiscreteStateSpace_Type<
-    A_Type, B_Type, C_Type, D_Type, NUMBER_OF_DELAY>;
+using type =
+    DiscreteStateSpace_Type<A_Type, B_Type, C_Type, D_Type, NUMBER_OF_DELAY>;
 
 inline auto make(void) -> type {
 
-  double dt = static_cast<double>(1.0);
+  float dt = static_cast<float>(1.0);
 
   auto A = servo_motor_constraints_lti_mpc_lkf_ss_A::make();
 
@@ -41,9 +41,7 @@ inline auto make(void) -> type {
 
   auto D = servo_motor_constraints_lti_mpc_lkf_ss_D::make();
 
-  return make_DiscreteStateSpace<NUMBER_OF_DELAY>(
-    A, B, C, D, dt);
-
+  return make_DiscreteStateSpace<NUMBER_OF_DELAY>(A, B, C, D, dt);
 }
 
 } // namespace servo_motor_constraints_lti_mpc_lkf_ss

@@ -7,21 +7,16 @@ namespace servo_motor_constraints_lti_mpc_lkf_ss_B {
 
 using namespace PythonNumpy;
 
-using SparseAvailable_lti_mpc_lkf_ss_B = SparseAvailable<
-    ColumnAvailable<false>,
-    ColumnAvailable<false>,
-    ColumnAvailable<false>,
-    ColumnAvailable<true>
->;
+using SparseAvailable_lti_mpc_lkf_ss_B =
+    SparseAvailable<ColumnAvailable<false>, ColumnAvailable<false>,
+                    ColumnAvailable<false>, ColumnAvailable<true>>;
 
-using type = SparseMatrix_Type<double, SparseAvailable_lti_mpc_lkf_ss_B>;
+using type = SparseMatrix_Type<float, SparseAvailable_lti_mpc_lkf_ss_B>;
 
 inline auto make(void) -> type {
 
   return make_SparseMatrix<SparseAvailable_lti_mpc_lkf_ss_B>(
-    static_cast<double>(0.04999999999999999)
-  );
-
+      static_cast<float>(0.04999999999999999));
 }
 
 } // namespace servo_motor_constraints_lti_mpc_lkf_ss_B
