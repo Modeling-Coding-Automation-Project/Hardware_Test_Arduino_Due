@@ -154,17 +154,17 @@ PythonControlTester::PythonControlTester() {
 
   for (std::size_t i = 0; i < LS_NUMBER_OF_DATA; i++) {
     for (std::size_t j = 0; j < X_SIZE; j++) {
-      this->LS_X(i, j) = static_cast<float>(LS_TestData::get_test_X(i, j));
+      this->_LS_X(i, j) = static_cast<float>(LS_TestData::get_test_X(i, j));
     }
   }
 
   for (std::size_t i = 0; i < LS_NUMBER_OF_DATA; i++) {
     for (std::size_t j = 0; j < Y_SIZE; j++) {
-      this->LS_Y(i, j) = static_cast<float>(LS_TestData::get_test_Y(i, j));
+      this->_LS_Y(i, j) = static_cast<float>(LS_TestData::get_test_Y(i, j));
     }
   }
 
-  rls.set_lambda(0.9F);
+  this->_rls.set_lambda(0.9F);
 }
 
 PythonControlTester::~PythonControlTester() {}
@@ -176,11 +176,11 @@ void PythonControlTester::test_ls(void) {
 
   time_start = micros(); // start measuring.
 
-  ls.fit(LS_X, LS_Y);
+  this->_ls.fit(this->_LS_X, this->_LS_Y);
 
   time_end = micros(); // end measuring.
 
-  auto weights = ls.get_weights();
+  auto weights = this->_ls.get_weights();
   decltype(weights) weights_true({{0.5f}, {-0.2f}, {0.3f}});
 
   /* send result */
@@ -231,12 +231,12 @@ void PythonControlTester::test_rls(void) {
 
     time_start[i] = micros(); // start measuring.
 
-    rls.update(X_row, y);
+    this->_rls.update(X_row, y);
 
     time_end[i] = micros(); // end measuring.
   }
 
-  auto weights = rls.get_weights();
+  auto weights = this->_rls.get_weights();
   decltype(weights) weights_true({{0.5f}, {-0.2f}, {0.3f}});
 
   /* send result */

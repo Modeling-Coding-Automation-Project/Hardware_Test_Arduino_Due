@@ -1,8 +1,6 @@
 #ifndef __PYTHON_CONTROL_TESTER_HPP__
 #define __PYTHON_CONTROL_TESTER_HPP__
 
-#define USE_EIGEN_LIBRARY (0)
-
 #include "python_control.hpp"
 
 #include <cmath>
@@ -56,11 +54,11 @@ public:
 
 private:
   /* Variables */
-  LS_Type ls;
-  RLS_Type rls;
+  LS_Type _ls;
+  RLS_Type _rls;
 
-  LS_X_Type LS_X;
-  LS_Y_Type LS_Y;
+  LS_X_Type _LS_X;
+  LS_Y_Type _LS_Y;
 };
 
 #endif // __PYTHON_CONTROL_TESTER_HPP__
