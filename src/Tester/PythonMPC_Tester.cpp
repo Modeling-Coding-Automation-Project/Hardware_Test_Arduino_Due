@@ -2,7 +2,11 @@
 
 PythonMPC_Tester::PythonMPC_Tester() {
 
+#if LTI_MPC_USE_CONSTRAINTS == 0
+  this->_mpc = servo_motor_lti_mpc::make();
+#else
   this->_mpc = servo_motor_constraints_lti_mpc::make();
+#endif // LTI_MPC_USE_CONSTRAINTS == 0
 }
 
 PythonMPC_Tester::~PythonMPC_Tester() {}
@@ -96,7 +100,7 @@ void PythonMPC_Tester::test_mpc(void) {
   std::stringstream result_stream;
   result_stream << std::scientific << std::setprecision(7);
 
-  result_stream << "Y[0], Y[1], ,U[0], Calculation time[us]" << std::endl;
+  result_stream << "Y[0], Y[1], U[0], Calculation time[us]" << std::endl;
   for (std::size_t i = 0; i < PythonMPC_Tester::SIM_STEP_MAX; i++) {
     result_stream << y_array[i](0, 0) << ", ";
     result_stream << y_array[i](1, 0) << ", ";
