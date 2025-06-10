@@ -22,6 +22,8 @@ public:
   static constexpr std::size_t OUTPUT_SIZE =
       servo_motor_constraints_lti_mpc::OUTPUT_SIZE;
 
+  static constexpr std::size_t SIM_STEP_MAX = 200;
+
   using Tester_MPC_Type = servo_motor_constraints_lti_mpc::type;
 
 public:
