@@ -10,6 +10,24 @@ C++制御アルゴリズムのメモリ消費、計算時間を Arduino Due で�
 
 Visual Studio Codeをインストールし、「PlatformIO」という拡張機能をインストールしてください。
 
+最初にビルドすると、「_B」や「_P」のDefine定義と、ライブラリ内の_B、_P変数定義が被っているため、エラーになります。
+
+これを解消するため、「ctype_base.h」というファイルの末尾辺りに、以下のコードを追加してください。
+
+```c
+/* Undef */
+#undef _U
+#undef _L
+#undef _N
+#undef _S
+#undef _P
+#undef _C
+#undef _X
+#undef _B
+```
+
+「ctype_base.h」は、Windowsの場合「C:\\Users\\<ユーザー名>\\.platformio\\packages」の下にあるパッケージフォルダの中にあります。
+
 ## サポート
 
 新規にissueを作成して、詳細をお知らせください。
