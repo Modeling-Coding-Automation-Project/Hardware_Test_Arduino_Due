@@ -7,14 +7,12 @@
 #include "servo_motor_constraints_lti_mpc_lkf.hpp"
 #include "servo_motor_constraints_lti_mpc_solver_factor.hpp"
 
-
 #include "servo_motor_constraints_U_max.hpp"
 #include "servo_motor_constraints_U_min.hpp"
 #include "servo_motor_constraints_Y_max.hpp"
 #include "servo_motor_constraints_Y_min.hpp"
 #include "servo_motor_constraints_delta_U_max.hpp"
 #include "servo_motor_constraints_delta_U_min.hpp"
-
 
 #include "python_mpc.hpp"
 
@@ -71,9 +69,8 @@ using ReferenceTrajectory_Type = MPC_ReferenceTrajectory_Type<Ref_Type, NP>;
 
 using type =
     LTI_MPC_Type<LKF_Type, PredictionMatrices_Type, ReferenceTrajectory_Type,
-                 Weight_U_Nc_Type, Delta_U_Min_Type, Delta_U_Max_Type,
-                 U_Min_Type, U_Max_Type, Y_Min_Type, Y_Max_Type,
-                 SolverFactor_Type>;
+                 Delta_U_Min_Type, Delta_U_Max_Type, U_Min_Type, U_Max_Type,
+                 Y_Min_Type, Y_Max_Type, SolverFactor_Type>;
 
 inline auto make() -> type {
 
