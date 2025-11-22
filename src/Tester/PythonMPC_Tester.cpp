@@ -55,7 +55,7 @@ void PythonMPC_Tester::test_mpc(void) {
   auto sys = PythonControl::make_DiscreteStateSpace(A, B, C, D, dt);
 
   /* Define reference */
-  servo_motor_constraints_lti_mpc::Ref_Type ref;
+  servo_motor_constraints_lti_mpc::Reference_Type reference;
 
   auto U = PythonControl::make_StateSpaceInput<INPUT_SIZE>(0.0F);
 
@@ -78,13 +78,13 @@ void PythonMPC_Tester::test_mpc(void) {
     sys.update(U);
 
     /* controller */
-    for (std::size_t i = 0; i < ref.rows(); ++i) {
-      ref(0, i) = 1.0F;
+    for (std::size_t i = 0; i < reference.rows(); ++i) {
+      reference(0, i) = 1.0F;
     }
 
     time_start[sim_step] = micros(); // start measuring.
 
-    U = this->_mpc.update(ref, sys.get_Y());
+    U = this->_mpc.update(reference, sys.get_Y());
 
     time_end[sim_step] = micros(); // end measuring.
 

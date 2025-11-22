@@ -63,9 +63,10 @@ using PredictionMatrices_Type =
     MPC_PredictionMatrices_Type<F_Type, Phi_Type, NP, NC, INPUT_SIZE,
                                 AUGMENTED_STATE_SIZE, OUTPUT_SIZE>;
 
-using Ref_Type = DenseMatrix_Type<float, OUTPUT_SIZE, 1>;
+using Reference_Type = DenseMatrix_Type<float, OUTPUT_SIZE, 1>;
 
-using ReferenceTrajectory_Type = MPC_ReferenceTrajectory_Type<Ref_Type, NP>;
+using ReferenceTrajectory_Type =
+    MPC_ReferenceTrajectory_Type<Reference_Type, NP>;
 
 using type =
     LTI_MPC_Type<LKF_Type, PredictionMatrices_Type, ReferenceTrajectory_Type,
