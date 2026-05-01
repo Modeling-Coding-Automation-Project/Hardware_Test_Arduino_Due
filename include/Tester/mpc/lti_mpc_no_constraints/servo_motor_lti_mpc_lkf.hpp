@@ -14,9 +14,9 @@ constexpr std::size_t NUMBER_OF_DELAY = 0;
 
 using LkfStateSpace_Type = servo_motor_lti_mpc_lkf_ss::type;
 
-constexpr std::size_t STATE_SIZE = LkfStateSpace_Type::A_Type::COLS;
-constexpr std::size_t INPUT_SIZE = LkfStateSpace_Type::B_Type::ROWS;
-constexpr std::size_t OUTPUT_SIZE = LkfStateSpace_Type::C_Type::COLS;
+constexpr std::size_t STATE_SIZE = LkfStateSpace_Type::A_Type::ROWS;
+constexpr std::size_t INPUT_SIZE = LkfStateSpace_Type::B_Type::COLS;
+constexpr std::size_t OUTPUT_SIZE = LkfStateSpace_Type::C_Type::ROWS;
 
 using Q_Type = KalmanFilter_Q_Type<float, STATE_SIZE>;
 

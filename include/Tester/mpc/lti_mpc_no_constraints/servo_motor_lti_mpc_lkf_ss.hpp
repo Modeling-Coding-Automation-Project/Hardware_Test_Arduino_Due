@@ -22,9 +22,9 @@ using C_Type = servo_motor_lti_mpc_lkf_ss_C::type;
 
 using D_Type = servo_motor_lti_mpc_lkf_ss_D::type;
 
-constexpr std::size_t INPUT_SIZE = B_Type::ROWS;
-constexpr std::size_t STATE_SIZE = A_Type::COLS;
-constexpr std::size_t OUTPUT_SIZE = C_Type::COLS;
+constexpr std::size_t INPUT_SIZE = B_Type::COLS;
+constexpr std::size_t STATE_SIZE = A_Type::ROWS;
+constexpr std::size_t OUTPUT_SIZE = C_Type::ROWS;
 
 using type =
     DiscreteStateSpace_Type<A_Type, B_Type, C_Type, D_Type, NUMBER_OF_DELAY>;
