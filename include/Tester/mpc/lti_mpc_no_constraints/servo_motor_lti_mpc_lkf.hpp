@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_LTI_MPC_LKF_HPP__
-#define __SERVO_MOTOR_LTI_MPC_LKF_HPP__
+#ifndef SERVO_MOTOR_LTI_MPC_LKF_HPP_
+#define SERVO_MOTOR_LTI_MPC_LKF_HPP_
 
 #include "servo_motor_lti_mpc_lkf_ss.hpp"
 
@@ -70,4 +70,4 @@ inline auto make() -> type {
 
 } // namespace servo_motor_lti_mpc_lkf
 
-#endif // __SERVO_MOTOR_LTI_MPC_LKF_HPP__
+#endif // SERVO_MOTOR_LTI_MPC_LKF_HPP_

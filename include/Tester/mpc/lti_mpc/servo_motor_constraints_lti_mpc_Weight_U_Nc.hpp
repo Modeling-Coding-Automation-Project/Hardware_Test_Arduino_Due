@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP__
-#define __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP__
+#ifndef SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP_
+#define SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP_
 
 #include "python_numpy.hpp"
 
@@ -17,4 +17,4 @@ inline auto make(void) -> type {
 
 } // namespace servo_motor_constraints_lti_mpc_Weight_U_Nc
 
-#endif // __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP__
+#endif // SERVO_MOTOR_CONSTRAINTS_LTI_MPC_WEIGHT_U_NC_HPP_

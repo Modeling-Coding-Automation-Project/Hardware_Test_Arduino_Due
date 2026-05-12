@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP__
-#define __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP__
+#ifndef SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP_
+#define SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP_
 
 #include "python_numpy.hpp"
 
@@ -21,4 +21,4 @@ inline auto make(void) -> type {
 
 } // namespace servo_motor_constraints_lti_mpc_lkf_ss_B
 
-#endif // __SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP__
+#endif // SERVO_MOTOR_CONSTRAINTS_LTI_MPC_LKF_SS_B_HPP_

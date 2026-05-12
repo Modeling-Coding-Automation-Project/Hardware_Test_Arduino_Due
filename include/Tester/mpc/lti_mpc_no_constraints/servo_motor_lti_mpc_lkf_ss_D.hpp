@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP__
-#define __SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP__
+#ifndef SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP_
+#define SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP_
 
 #include "python_numpy.hpp"
 
@@ -16,4 +16,4 @@ inline auto make(void) -> type { return make_SparseMatrixEmpty<float, 2, 1>(); }
 
 } // namespace servo_motor_lti_mpc_lkf_ss_D
 
-#endif // __SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP__
+#endif // SERVO_MOTOR_LTI_MPC_LKF_SS_D_HPP_

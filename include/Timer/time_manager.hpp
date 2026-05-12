@@ -1,5 +1,5 @@
-#ifndef __TIME_MANAGER_HPP__
-#define __TIME_MANAGER_HPP__
+#ifndef TIME_MANAGER_HPP_
+#define TIME_MANAGER_HPP_
 
 #include <Arduino.h>
 #include <stdint.h>
@@ -19,4 +19,4 @@ public:
   static double get_time(void);
 };
 
-#endif // __TIME_MANAGER_HPP__
+#endif // TIME_MANAGER_HPP_

@@ -1,5 +1,5 @@
-#ifndef __BASE_UTILITY_TESTER_HPP__
-#define __BASE_UTILITY_TESTER_HPP__
+#ifndef BASE_UTILITY_TESTER_HPP_
+#define BASE_UTILITY_TESTER_HPP_
 
 #include "base_utility.hpp"
 
@@ -33,4 +33,4 @@ public:
   void test_copy(void);
 };
 
-#endif // __BASE_UTILITY_TESTER_HPP__
+#endif // BASE_UTILITY_TESTER_HPP_

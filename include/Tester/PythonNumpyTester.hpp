@@ -1,5 +1,5 @@
-#ifndef __PYTHON_NUMPY_TESTER_HPP__
-#define __PYTHON_NUMPY_TESTER_HPP__
+#ifndef PYTHON_NUMPY_TESTER_HPP_
+#define PYTHON_NUMPY_TESTER_HPP_
 
 #define USE_EIGEN_LIBRARY (0)
 
@@ -55,4 +55,4 @@ private:
 #endif // USE_EIGEN_LIBRARY == 1
 };
 
-#endif // __PYTHON_NUMPY_TESTER_HPP__
+#endif // PYTHON_NUMPY_TESTER_HPP_

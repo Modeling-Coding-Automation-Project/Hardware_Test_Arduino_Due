@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP__
-#define __SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP__
+#ifndef SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP_
+#define SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP_
 
 #include "python_numpy.hpp"
 
@@ -16,4 +16,4 @@ inline auto make(void) -> type { return make_SparseMatrixEmpty<float, 2, 1>(); }
 
 } // namespace servo_motor_constraints_Y_min
 
-#endif // __SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP__
+#endif // SERVO_MOTOR_CONSTRAINTS_Y_MIN_HPP_

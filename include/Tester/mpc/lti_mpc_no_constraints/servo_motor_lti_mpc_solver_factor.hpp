@@ -1,5 +1,5 @@
-#ifndef __SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP__
-#define __SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP__
+#ifndef SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP_
+#define SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP_
 
 #include "python_numpy.hpp"
 
@@ -100,4 +100,4 @@ inline auto make(void) -> type {
 
 } // namespace servo_motor_lti_mpc_solver_factor
 
-#endif // __SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP__
+#endif // SERVO_MOTOR_LTI_MPC_SOLVER_FACTOR_HPP_

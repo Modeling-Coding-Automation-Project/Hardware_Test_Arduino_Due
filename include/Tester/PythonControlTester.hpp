@@ -1,5 +1,5 @@
-#ifndef __PYTHON_CONTROL_TESTER_HPP__
-#define __PYTHON_CONTROL_TESTER_HPP__
+#ifndef PYTHON_CONTROL_TESTER_HPP_
+#define PYTHON_CONTROL_TESTER_HPP_
 
 #include "python_control.hpp"
 
@@ -61,4 +61,4 @@ private:
   LS_Y_Type _LS_Y;
 };
 
-#endif // __PYTHON_CONTROL_TESTER_HPP__
+#endif // PYTHON_CONTROL_TESTER_HPP_
