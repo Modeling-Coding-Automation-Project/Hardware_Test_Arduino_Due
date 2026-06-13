@@ -195,19 +195,17 @@ void PythonControlTester::test_ls(void) {
   result_stream << time_end - time_start << std::endl;
 
   result_stream << "Weights true:" << std::endl;
-  result_stream << weights_true(0, 0) << ", " << weights_true(1, 0) << ", ";
-  result_stream << weights_true(2, 0) << std::endl;
+  result_stream << weights_true(0) << ", " << weights_true(1) << ", ";
+  result_stream << weights_true(2) << std::endl;
 
   result_stream << "Weights estimated:" << std::endl;
-  result_stream << weights(0, 0) << ", " << weights(1, 0) << ", ";
-  result_stream << weights(2, 0) << std::endl;
+  result_stream << weights(0) << ", " << weights(1) << ", ";
+  result_stream << weights(2) << std::endl;
 
   result_stream << "Weights relative error:" << std::endl;
-  result_stream << (weights(0, 0) - weights_true(0, 0)) / weights_true(0, 0)
-                << ", ";
-  result_stream << (weights(1, 0) - weights_true(1, 0)) / weights_true(1, 0)
-                << ", ";
-  result_stream << (weights(2, 0) - weights_true(2, 0)) / weights_true(2, 0)
+  result_stream << (weights(0) - weights_true(0)) / weights_true(0) << ", ";
+  result_stream << (weights(1) - weights_true(1)) / weights_true(1) << ", ";
+  result_stream << (weights(2) - weights_true(2)) / weights_true(2)
                 << std::endl;
 
   result_stream << std::endl;
@@ -224,7 +222,7 @@ void PythonControlTester::test_rls(void) {
   for (std::size_t i = 0; i < RLS_NUMBER_OF_DATA; i++) {
     RLS_X_Type X_row;
     for (std::size_t j = 0; j < X_SIZE; j++) {
-      X_row(j, 0) = static_cast<float>(LS_TestData::get_test_X(i, j));
+      X_row(j) = static_cast<float>(LS_TestData::get_test_X(i, j));
     }
 
     float y = static_cast<float>(LS_TestData::get_test_Y(i, 0));
@@ -253,19 +251,17 @@ void PythonControlTester::test_rls(void) {
   }
 
   result_stream << "Weights true:" << std::endl;
-  result_stream << weights_true(0, 0) << ", " << weights_true(1, 0) << ", ";
-  result_stream << weights_true(2, 0) << std::endl;
+  result_stream << weights_true(0) << ", " << weights_true(1) << ", ";
+  result_stream << weights_true(2) << std::endl;
 
   result_stream << "Weights estimated:" << std::endl;
-  result_stream << weights(0, 0) << ", " << weights(1, 0) << ", ";
-  result_stream << weights(2, 0) << std::endl;
+  result_stream << weights(0) << ", " << weights(1) << ", ";
+  result_stream << weights(2) << std::endl;
 
   result_stream << "Weights relative error:" << std::endl;
-  result_stream << (weights(0, 0) - weights_true(0, 0)) / weights_true(0, 0)
-                << ", ";
-  result_stream << (weights(1, 0) - weights_true(1, 0)) / weights_true(1, 0)
-                << ", ";
-  result_stream << (weights(2, 0) - weights_true(2, 0)) / weights_true(2, 0)
+  result_stream << (weights(0) - weights_true(0)) / weights_true(0) << ", ";
+  result_stream << (weights(1) - weights_true(1)) / weights_true(1) << ", ";
+  result_stream << (weights(2) - weights_true(2)) / weights_true(2)
                 << std::endl;
 
   result_stream << std::endl;
