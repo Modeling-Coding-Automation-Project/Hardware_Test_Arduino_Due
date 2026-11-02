@@ -83,4 +83,5 @@
     ],
     "editor.defaultFormatter": "xaver.clang-format",
     "editor.formatOnSave": true,
+    "cmake.sourceDirectory": "C:/work/ModelingCodingAutomationProject/Hardware_Test_Arduino_Due/lib/eigen",
 }
