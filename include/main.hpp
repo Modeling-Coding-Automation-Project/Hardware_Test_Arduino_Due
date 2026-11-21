@@ -4,6 +4,7 @@
 // #include "BaseUtilityTester.hpp"
 // #include "PythonMathTester.hpp"
 // #include "PythonNumpyTester.hpp"
+// #include "PythonNumpyLinalgTester.hpp"
 // #include "PythonControlTester.hpp"
 #include "PythonMPC_Tester.hpp"
 
@@ -21,6 +22,7 @@
 // BaseUtilityTester base_utility_tester;
 // PythonMathTester python_math_tester;
 // PythonNumpyTester python_numpy_tester;
+// PythonNumpyLinalgTester python_numpy_linalg_tester;
 // PythonControlTester python_control_tester;
 PythonMPC_Tester python_mpc_tester;
 
