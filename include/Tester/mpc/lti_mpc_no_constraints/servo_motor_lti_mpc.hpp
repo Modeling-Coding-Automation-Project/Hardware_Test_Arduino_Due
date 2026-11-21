@@ -47,7 +47,7 @@ using type =
     LTI_MPC_NoConstraints_Type<LKF_Type, PredictionMatrices_Type,
                                ReferenceTrajectory_Type, SolverFactor_Type>;
 
-inline auto make() -> type {
+inline auto make(void) -> type {
 
   auto kalman_filter = servo_motor_lti_mpc_lkf::make();
 

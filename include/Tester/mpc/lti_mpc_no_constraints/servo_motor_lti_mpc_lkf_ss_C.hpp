@@ -15,9 +15,14 @@ using type = SparseMatrix_Type<float, SparseAvailable_lti_mpc_lkf_ss_C>;
 
 inline auto make(void) -> type {
 
-  return make_SparseMatrix<SparseAvailable_lti_mpc_lkf_ss_C>(
-      static_cast<float>(1.0), static_cast<float>(1280.1990063378407),
-      static_cast<float>(-64.00995031689203));
+  auto result =
+      make_SparseMatrixZeros<float, SparseAvailable_lti_mpc_lkf_ss_C>();
+
+  result.unsafe_access(0) = static_cast<float>(1.0);
+  result.unsafe_access(1) = static_cast<float>(1280.1990063378407);
+  result.unsafe_access(2) = static_cast<float>(-64.00995031689203);
+
+  return result;
 }
 
 } // namespace servo_motor_lti_mpc_lkf_ss_C

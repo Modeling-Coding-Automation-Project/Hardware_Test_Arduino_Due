@@ -11,8 +11,12 @@ using type = DiagMatrix_Type<float, 2>;
 
 inline auto make(void) -> type {
 
-  return make_DiagMatrix<2>(static_cast<float>(0.001),
-                            static_cast<float>(0.001));
+  auto result = make_DiagMatrixZeros<float, 2>();
+
+  result.unsafe_access(0) = static_cast<float>(0.001);
+  result.unsafe_access(1) = static_cast<float>(0.001);
+
+  return result;
 }
 
 } // namespace servo_motor_constraints_lti_mpc_Weight_U_Nc
