@@ -8,6 +8,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        environment:
+        - due
+        - base_utility_copy
+        - math_sqrt
+        - math_exp
+        - math_log
+        - math_trigonometric
+        - math_sincos
+        - numpy_arithmetic
+        - numpy_linalg
+        - control_ls
+        - control_rls
 
     steps:
     - name: Checkout code
@@ -17,13 +32,9 @@ jobs:
     - name: Cache PlatformIO
       uses: actions/cache@v6
       with:
-        path: '~/.platformio
-
-          '
+        path: ~/.platformio
         key: ${{ runner.os }}-platformio-${{ hashFiles('platformio.ini') }}
-        restore-keys: '${{ runner.os }}-platformio-
-
-          '
+        restore-keys: ${{ runner.os }}-platformio-
     - name: Set up Python
       uses: actions/setup-python@v7
       with:
@@ -31,4 +42,4 @@ jobs:
     - name: Install PlatformIO
       run: pip install platformio
     - name: Build Arduino Due firmware
-      run: pio run -e due
+      run: pio run -e ${{ matrix.environment }}
